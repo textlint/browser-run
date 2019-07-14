@@ -63,4 +63,5 @@ export const run = () => {
             input: inputFilePath
         });
     }
+    return Promise.resolve();
 };
