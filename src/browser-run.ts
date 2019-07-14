@@ -1,4 +1,3 @@
-import * as fs from "fs";
 import {
     FAIL_MARK,
     GenerateCodeOptions,
@@ -21,12 +20,12 @@ export const browserRun = (options: GenerateCodeOptions & { cwd: string }) => {
             ruleId: options.ruleId,
             ruleFilePath: options.ruleFilePath,
             inputFilePath: options.inputFilePath,
-            input: fs.readFileSync(options.inputFilePath, "utf-8")
+            input: options.input
         })
         : generatePresetCodeStream({
             presetFilePath: options.presetFilePath,
             inputFilePath: options.inputFilePath,
-            input: fs.readFileSync(options.inputFilePath, "utf-8")
+            input: options.input
         });
     return new Promise((resolve, reject) => {
         const destination = browser();

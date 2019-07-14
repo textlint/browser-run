@@ -40,12 +40,13 @@ You should specify rule file that is build by [textlint-scripts](https://github.
 ## Node Module
 
 ```js
+import * as fs from "fs"
 import * as path from "path"
 import { browserRun } from "@textlint/browser-run";
 
 const ruleFile = require.resolve("./fixtures/rule.js");
 browserRun({
-    input: path.join(__dirname, "fixtures/README.md"),
+    input: fs.readFileSync(path.join(__dirname, "fixtures/README.md"), "utf-8"),
     inputFilePath: path.join(__dirname, "fixtures/README.md"),
     ruleFilePath: ruleFile,
     ruleId: "test-rule",

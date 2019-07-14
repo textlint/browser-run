@@ -50,7 +50,7 @@ export const run = () => {
             ruleId: cli.flags.ruleId || "test-rule",
             ruleFilePath: ruleEntryFilePath,
             inputFilePath: inputFilePath,
-            input: inputFilePath,
+            input: fs.readFileSync(inputFilePath, "utf-8"),
             cwd: process.cwd()
         });
     } else if (cli.flags.preset) {
@@ -61,7 +61,7 @@ export const run = () => {
         return browserRun({
             presetFilePath: rulePresetEntryFilePath,
             inputFilePath: inputFilePath,
-            input: inputFilePath,
+            input: fs.readFileSync(inputFilePath, "utf-8"),
             cwd: process.cwd()
         });
     }
