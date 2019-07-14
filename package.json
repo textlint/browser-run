@@ -1,0 +1,86 @@
+{
+  "name": "@textlint/browser-run",
+  "version": "1.0.0",
+  "description": "Run textlint rule on browser for testing.",
+  "keywords": [
+    "browser",
+    "testing",
+    "textlint"
+  ],
+  "homepage": "https://github.com/textlint/browser-run",
+  "bugs": {
+    "url": "https://github.com/textlint/browser-run/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/textlint/browser-run.git"
+  },
+  "license": "MIT",
+  "author": "azu",
+  "files": [
+    "bin/",
+    "lib/",
+    "src/"
+  ],
+  "main": "lib/browser-run.js",
+  "types": "lib/browser-run.d.ts",
+  "bin": {
+    "textlint-browser-run": "./bin/cmd.js"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "build": "cross-env NODE_ENV=production tsc -p .",
+    "clean": "rimraf lib/",
+    "prettier": "prettier --write \"**/*.{js,jsx,ts,tsx,css}\"",
+    "prepublish": "npm run --if-present build",
+    "test": "mocha \"test/**/*.ts\"",
+    "watch": "tsc -p . --watch"
+  },
+  "husky": {
+    "hooks": {
+      "precommit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,css}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "prettier": {
+    "printWidth": 120,
+    "singleQuote": false,
+    "tabWidth": 4
+  },
+  "devDependencies": {
+    "@types/jsesc": "^0.4.29",
+    "@types/meow": "^5.0.0",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^12.6.2",
+    "cross-env": "^5.2.0",
+    "husky": "^3.0.0",
+    "lint-staged": "^9.2.0",
+    "mocha": "^6.1.4",
+    "prettier": "^1.18.2",
+    "rimraf": "^2.6.3",
+    "textlint-rule-no-todo": "^2.0.1",
+    "ts-node": "^8.3.0",
+    "ts-node-test-register": "^8.0.1",
+    "typescript": "^3.5.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@textlint/kernel": "^3.1.7",
+    "@textlint/linter-formatter": "^3.1.6",
+    "@textlint/textlint-plugin-markdown": "^5.1.7",
+    "browser-run": "^6.0.0",
+    "browserify": "^16.3.0",
+    "jsesc": "^2.5.2",
+    "meow": "^5.0.0"
+  }
+}
