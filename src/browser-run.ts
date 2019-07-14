@@ -10,6 +10,11 @@ import {
 import browserify from "browserify";
 
 const browser = require("browser-run");
+/**
+ * Return resolved promise if the rule is run on browser.
+ * Returne rejected promise if the rules is not run on browser or transpiler error.
+ * @param options
+ */
 export const browserRun = (options: GenerateCodeOptions & { cwd: string }) => {
     const readable = isGenerateCodeRule(options)
         ? generateRuleCodeStream({
