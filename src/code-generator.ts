@@ -30,7 +30,7 @@ textlint.lintText("${jsesc(options.input)}", {
     console.log(JSON.stringify(result, null, 4));
 }).catch(error => {
     console.error(error);
-    console.error("${FAIL_MARK}");
+    console.error("${jsesc(FAIL_MARK)}");
 }).finally(() => {
     window.close();
 })`;
@@ -67,7 +67,7 @@ textlint.lintText("${jsesc(options.input)}", {
     console.log(JSON.stringify(result, null, 4));
 }).catch(error => {
     console.error(error);
-    console.error("${FAIL_MARK}");
+    console.error("${jsesc(FAIL_MARK)}");
 }).finally(() => {
     window.close();
 })`;
