@@ -1,5 +1,7 @@
 import jsesc = require("jsesc");
 import { Readable } from "stream";
+
+export const FAIL_MARK = "________________THIS_RULE_DOES_NOT_WORK_ON_BROWSER________________";
 /**
  * Generate code that run textlint rule preset
  * @param options
@@ -28,6 +30,7 @@ textlint.lintText("${jsesc(options.input)}", {
     console.log(JSON.stringify(result, null, 4));
 }).catch(error => {
     console.error(error);
+    console.error("${FAIL_MARK}");
 }).finally(() => {
     window.close();
 })`;
@@ -64,6 +67,7 @@ textlint.lintText("${jsesc(options.input)}", {
     console.log(JSON.stringify(result, null, 4));
 }).catch(error => {
     console.error(error);
+    console.error("${FAIL_MARK}");
 }).finally(() => {
     window.close();
 })`;

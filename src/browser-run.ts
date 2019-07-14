@@ -1,5 +1,6 @@
 import * as fs from "fs";
 import {
+    FAIL_MARK,
     GenerateCodeOptions,
     generatePresetCodeStream,
     generateRuleCodeStream,
@@ -27,6 +28,12 @@ export const browserRun = (options: GenerateCodeOptions) => {
             .bundle()
             .pipe(destination)
             .pipe(process.stdout);
+        destination.on("data", (chunk: any) => {
+            const data = String(chunk);
+            if (data.includes(FAIL_MARK)) {
+                reject(new Error(data));
+            }
+        });
         destination.on("end", (error: Error) => {
             if (error) {
                 return reject(error);
