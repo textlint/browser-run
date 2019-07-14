@@ -16,7 +16,7 @@ This tools did following steps:
 
 Install with [npm](https://www.npmjs.com/):
 
-    npm install @textlint/browser-run --global;
+    npm install @textlint/browser-run --global
 
 ## Usage
 
