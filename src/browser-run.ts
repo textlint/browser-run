@@ -7,12 +7,13 @@ import {
     isGenerateCodeRule
 } from "./code-generator";
 
-const browserify = require("browserify");
+import browserify from "browserify";
+
 const browser = require("browser-run");
-export const browserRun = (options: GenerateCodeOptions) => {
+export const browserRun = (options: GenerateCodeOptions & { cwd: string }) => {
     const readable = isGenerateCodeRule(options)
         ? generateRuleCodeStream({
-            ruleId: options.ruleId || "test-rule",
+            ruleId: options.ruleId,
             ruleFilePath: options.ruleFilePath,
             inputFilePath: options.inputFilePath,
             input: fs.readFileSync(options.inputFilePath, "utf-8")
@@ -24,7 +25,7 @@ export const browserRun = (options: GenerateCodeOptions) => {
         });
     return new Promise((resolve, reject) => {
         const destination = browser();
-        browserify(readable)
+        browserify(readable, { basedir: options.cwd })
             .bundle()
             .pipe(destination)
             .pipe(process.stdout);

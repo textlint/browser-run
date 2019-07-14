@@ -47,10 +47,11 @@ export const run = () => {
             throw new Error(`--rule: Does not exist: ${ruleEntryFilePath}`);
         }
         return browserRun({
-            ruleId: cli.flags.ruleId,
+            ruleId: cli.flags.ruleId || "test-rule",
             ruleFilePath: ruleEntryFilePath,
             inputFilePath: inputFilePath,
-            input: inputFilePath
+            input: inputFilePath,
+            cwd: process.cwd()
         });
     } else if (cli.flags.preset) {
         const rulePresetEntryFilePath = path.resolve(process.cwd(), cli.flags.preset);
@@ -60,7 +61,8 @@ export const run = () => {
         return browserRun({
             presetFilePath: rulePresetEntryFilePath,
             inputFilePath: inputFilePath,
-            input: inputFilePath
+            input: inputFilePath,
+            cwd: process.cwd()
         });
     }
     return Promise.resolve();

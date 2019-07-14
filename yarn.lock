@@ -132,6 +132,14 @@
   resolved "https://registry.yarnpkg.com/@types/bluebird/-/bluebird-3.5.27.tgz#61eb4d75dc6bfbce51cf49ee9bbebe941b2cb5d0"
   integrity sha512-6BmYWSBea18+tSjjSC3QIyV93ZKAeNWGM7R6aYt1ryTZXrlHF+QLV0G2yV0viEGVyRkyQsWfMoJ0k/YghBX5sQ==
 
+"@types/browserify@^12.0.36":
+  version "12.0.36"
+  resolved "https://registry.yarnpkg.com/@types/browserify/-/browserify-12.0.36.tgz#a7b662550bd4102b38ba83ef4ad6db871ea91331"
+  integrity sha512-hYXvPod5upkYTC7auziOATFsu/0MGxozbzNI80sZV044JTF7UtstHeNOM52b+bg7/taZ3fheK7oeb+jpm4C0/w==
+  dependencies:
+    "@types/insert-module-globals" "*"
+    "@types/node" "*"
+
 "@types/events@*":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@types/events/-/events-3.0.0.tgz#2862f3f58a9a7f7c3e78d79f130dd4d71c25c2a7"
@@ -144,6 +152,13 @@
   dependencies:
     "@types/events" "*"
     "@types/minimatch" "*"
+    "@types/node" "*"
+
+"@types/insert-module-globals@*":
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/@types/insert-module-globals/-/insert-module-globals-7.0.1.tgz#234f9263f6b315088287e3597d7e98033804a031"
+  integrity sha512-qtSfo/jdYHO4jNO6QCp4CwR/TPrvR39Yan5K4nPU1iCmxcnTWiERKDXcvFGuXEmfpjrHeOCvrZPa0UrUsy+mvA==
+  dependencies:
     "@types/node" "*"
 
 "@types/jsesc@^0.4.29":
