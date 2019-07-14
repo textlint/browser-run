@@ -1,6 +1,6 @@
 {
   "name": "@textlint/browser-run",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Run textlint rule on browser for testing.",
   "keywords": [
     "browser",
