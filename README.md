@@ -37,6 +37,26 @@ Install with [npm](https://www.npmjs.com/):
 
 You should specify rule file that is build by [textlint-scripts](https://github.com/textlint/textlint-scripts). 
 
+## Node Module
+
+```js
+import * as path from "path"
+import { browserRun } from "@textlint/browser-run";
+
+const ruleFile = require.resolve("./fixtures/rule.js");
+browserRun({
+    input: path.join(__dirname, "fixtures/README.md"),
+    inputFilePath: path.join(__dirname, "fixtures/README.md"),
+    ruleFilePath: ruleFile,
+    ruleId: "test-rule",
+    cwd: __dirname
+}).then(() => {
+    console.log("Work");
+}).catch(error => {
+    console.log("Does not work")
+});
+```
+
 ## Changelog
 
 See [Releases page](https://github.com/textlint/browser-run/releases).
