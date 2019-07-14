@@ -1,6 +1,11 @@
 import jsesc = require("jsesc");
 import { Readable } from "stream";
 
+const escapeStringLiteral = (string: string) => {
+    return jsesc(string, {
+        quotes: "double"
+    });
+};
 export const FAIL_MARK = "________________THIS_RULE_DOES_NOT_WORK_ON_BROWSER________________";
 /**
  * Generate code that run textlint rule preset
@@ -11,10 +16,10 @@ const generateRulePresetCode = (options: GenerateCodePreset) => {
 const { TextlintKernel } = require("@textlint/kernel");
 const textlint = new TextlintKernel();
 const formatter = require("@textlint/linter-formatter/lib/linter-formatter/src/formatters/stylish.js").default;
-const presetModule = require("${jsesc(options.presetFilePath)}");
+const presetModule = require("${escapeStringLiteral(options.presetFilePath)}");
 const preset = presetModule.default ? presetModule.default : presetModule;
-textlint.lintText("${jsesc(options.input)}", {
-    filePath: "${jsesc(options.inputFilePath)}",
+textlint.lintText("${escapeStringLiteral(options.input)}", {
+    filePath: "${escapeStringLiteral(options.inputFilePath)}",
     ext: ".md",
     plugins: [
         {
@@ -30,7 +35,7 @@ textlint.lintText("${jsesc(options.input)}", {
     console.log(JSON.stringify(result, null, 4));
 }).catch(error => {
     console.error(error);
-    console.error("${jsesc(FAIL_MARK)}");
+    console.error("${escapeStringLiteral(FAIL_MARK)}");
 }).finally(() => {
     window.close();
 })`;
@@ -44,9 +49,9 @@ const generateRuleCode = (options: GenerateCodeRule) => {
 const { TextlintKernel } = require("@textlint/kernel");
 const textlint = new TextlintKernel();
 const formatter = require("@textlint/linter-formatter/lib/linter-formatter/src/formatters/stylish.js").default;
-const rule = require("${jsesc(options.ruleFilePath)}");
-textlint.lintText("${jsesc(options.input)}", {
-    filePath: "${jsesc(options.inputFilePath)}",
+const rule = require("${escapeStringLiteral(options.ruleFilePath)}");
+textlint.lintText("${escapeStringLiteral(options.input)}", {
+    filePath: "${escapeStringLiteral(options.inputFilePath)}",
     ext: ".md",
     plugins: [
         {
@@ -56,7 +61,7 @@ textlint.lintText("${jsesc(options.input)}", {
     ],
     rules: [
         {
-            ruleId: "${jsesc(options.ruleId)}",
+            ruleId: "${escapeStringLiteral(options.ruleId)}",
             rule: rule.default ? rule.default : rule
         }
     ]
@@ -67,7 +72,7 @@ textlint.lintText("${jsesc(options.input)}", {
     console.log(JSON.stringify(result, null, 4));
 }).catch(error => {
     console.error(error);
-    console.error("${jsesc(FAIL_MARK)}");
+    console.error("${escapeStringLiteral(FAIL_MARK)}");
 }).finally(() => {
     window.close();
 })`;
