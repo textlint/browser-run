@@ -26,16 +26,19 @@ Install with [npm](https://www.npmjs.com/):
     Options
       --ruleId rule id. Default: test-rule 
       --rule file path to rule module entry
-      
       --preset file path to rule preset module entry
  
     Examples
       $ npx @textlint/browser-run --rule ./lib/rule.js ./README.md
       $ npx @textlint/browser-run --preset ./lib/rule-preset.js ./README.md
 
-**Notes**
+:memo: **Notes**
 
-You should specify rule file that is build by [textlint-scripts](https://github.com/textlint/textlint-scripts). 
+You should specify rule js file that is build by [textlint-scripts](https://github.com/textlint/textlint-scripts). 
+
+:memo: Note for [kuromojin](https://github.com/azu/kuromojin)
+
+`@textlint/browser-run` define `window.kuromojin.dicPath` to `https://kuromojin.netlify.com/dict/` by default for support [kuromojin](https://github.com/azu/kuromojin).
 
 ## Node Module
 
