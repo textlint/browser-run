@@ -18,6 +18,9 @@ const textlint = new TextlintKernel();
 const formatter = require("@textlint/linter-formatter/lib/linter-formatter/src/formatters/stylish.js").default;
 const presetModule = require("${escapeStringLiteral(options.presetFilePath)}");
 const preset = presetModule.default ? presetModule.default : presetModule;
+window.kuromojin = {
+    dicPath: "https://kuromojin.netlify.com/dict"
+};
 textlint.lintText("${escapeStringLiteral(options.input)}", {
     filePath: "${escapeStringLiteral(options.inputFilePath)}",
     ext: ".md",
@@ -50,6 +53,9 @@ const { TextlintKernel } = require("@textlint/kernel");
 const textlint = new TextlintKernel();
 const formatter = require("@textlint/linter-formatter/lib/linter-formatter/src/formatters/stylish.js").default;
 const rule = require("${escapeStringLiteral(options.ruleFilePath)}");
+window.kuromojin = {
+    dicPath: "https://kuromojin.netlify.com/dict"
+};
 textlint.lintText("${escapeStringLiteral(options.input)}", {
     filePath: "${escapeStringLiteral(options.inputFilePath)}",
     ext: ".md",
